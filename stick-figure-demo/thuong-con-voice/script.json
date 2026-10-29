@@ -1,0 +1,215 @@
+[
+ {
+  "id": "h1",
+  "scene": "hook",
+  "text": "*Đừng ra ngoài,* gió đấy!",
+  "tts": {
+   "length": 1.15
+  }
+ },
+ {
+  "id": "h2",
+  "scene": "hook",
+  "text": "*Đừng nghịch đất,* bẩn hết bây giờ!"
+ },
+ {
+  "id": "h3",
+  "scene": "hook",
+  "text": "*Đừng tắm nước lạnh,* ốm đấy!"
+ },
+ {
+  "id": "h4",
+  "scene": "hook",
+  "text": "*Đừng ra nắng!*",
+  "tts": {
+   "length": 1.15
+  }
+ },
+ {
+  "id": "h5",
+  "scene": "hook",
+  "text": "*Đừng chạy nữa,* ngã bây giờ!"
+ },
+ {
+  "id": "f1",
+  "scene": "familiar",
+  "text": "Nghe quen lắm, | phải không?"
+ },
+ {
+  "id": "f2",
+  "scene": "familiar",
+  "text": "Đó là những câu | ta vẫn nói với con | *mỗi ngày.*"
+ },
+ {
+  "id": "l1",
+  "scene": "love",
+  "text": "Câu nào cũng | xuất phát từ *tình thương.*"
+ },
+ {
+  "id": "l2",
+  "scene": "love",
+  "text": "Nhưng nếu tuổi thơ của con | chỉ toàn chữ *đừng,*"
+ },
+ {
+  "id": "l3",
+  "scene": "love",
+  "text": "thì con còn bao nhiêu cơ hội | để *được thử,* | *được sai,* | và *được lớn?*"
+ },
+ {
+  "id": "t1",
+  "scene": "two",
+  "text": "Thử hình dung | *hai đứa trẻ.*"
+ },
+ {
+  "id": "i1",
+  "scene": "indoor",
+  "text": "Bé thứ nhất | gần như chỉ ở trong nhà."
+ },
+ {
+  "id": "i2",
+  "scene": "indoor",
+  "text": "Muốn chạy, | người lớn sợ ngã."
+ },
+ {
+  "id": "i3",
+  "scene": "indoor",
+  "text": "Muốn nghịch cát, | sợ bẩn."
+ },
+ {
+  "id": "i4",
+  "scene": "indoor",
+  "text": "Muốn ra ngoài, | sợ nắng, sợ gió."
+ },
+ {
+  "id": "i5",
+  "scene": "indoor",
+  "text": "Dần dần, | *màn hình* | trở thành cả thế giới của con."
+ },
+ {
+  "id": "o1",
+  "scene": "outdoor",
+  "text": "Bé thứ hai | được ra công viên, | chạy trên bãi cỏ,"
+ },
+ {
+  "id": "o2",
+  "scene": "outdoor",
+  "text": "cùng bố mẹ | *vun đất, trồng cây.*"
+ },
+ {
+  "id": "o3",
+  "scene": "outdoor",
+  "text": "Con tập bước qua chướng ngại, | tập giữ thăng bằng,"
+ },
+ {
+  "id": "o4",
+  "scene": "outdoor",
+  "text": "và *tự đứng dậy* | sau một lần vấp nhẹ."
+ },
+ {
+  "id": "c1",
+  "scene": "compare",
+  "text": "Bé thứ hai | có nhiều cơ hội rèn | *vận động,* *kỹ năng* | và *sự tự tin* hơn,"
+ },
+ {
+  "id": "c2",
+  "scene": "compare",
+  "text": "vì con *được thực hành* | những điều bé thứ nhất | chưa từng có cơ hội thử."
+ },
+ {
+  "id": "c3",
+  "scene": "compare",
+  "text": "Nếu lúc nào bố mẹ cũng | *ngăn trước,* *làm thay,* *sợ thay,*",
+  "tts": {
+   "length": 1.15
+  }
+ },
+ {
+  "id": "c4",
+  "scene": "compare",
+  "text": "thì đến bao giờ | con mới biết *tự làm?*"
+ },
+ {
+  "id": "n1",
+  "scene": "nature",
+  "text": "Trẻ con vốn sinh ra | để chạy nhảy dưới bầu trời."
+ },
+ {
+  "id": "n2",
+  "scene": "nature",
+  "text": "*Thuận theo tự nhiên,* | cơ thể con mới khoẻ."
+ },
+ {
+  "id": "n3",
+  "scene": "nature",
+  "text": "Một chút *nắng sớm* | giúp xương con chắc khoẻ."
+ },
+ {
+  "id": "n4",
+  "scene": "nature",
+  "text": "*Gió trời, cây cỏ* | cho con hít thở | khí trời trong lành."
+ },
+ {
+  "id": "n5",
+  "scene": "nature",
+  "text": "Một chút *nước lạnh* | giúp con sảng khoái, | dần quen với nóng lạnh | của đất trời."
+ },
+ {
+  "id": "n6",
+  "scene": "nature",
+  "text": "Được chạy nhảy thoả thích, | con *ăn ngon hơn,* | *ngủ sâu hơn.*"
+ },
+ {
+  "id": "n7",
+  "scene": "nature",
+  "text": "Được *ngắm trời xa,* | đôi mắt con cũng được nghỉ ngơi | sau những giờ nhìn gần."
+ },
+ {
+  "id": "n8",
+  "scene": "caution",
+  "text": "Thuận tự nhiên | không có nghĩa là | để con dầm mưa, | phơi nắng gắt | hay tắm nước lạnh buốt."
+ },
+ {
+  "id": "n9",
+  "scene": "caution",
+  "text": "Mà là *mỗi ngày* | cho con ra ngoài trời | đúng lúc, đủ lâu, | có bố mẹ ở bên."
+ },
+ {
+  "id": "e1",
+  "scene": "end",
+  "text": "Điều cần thay đổi | không phải là thương con ít đi,"
+ },
+ {
+  "id": "e2",
+  "scene": "end",
+  "text": "mà là *cách ta đồng hành* | cùng con."
+ },
+ {
+  "id": "e3",
+  "scene": "end",
+  "text": "Bố mẹ không thể dọn sạch | mọi hòn đá | trên đường đời của con."
+ },
+ {
+  "id": "e4",
+  "scene": "end",
+  "text": "Nhưng có thể giúp con | tập vượt qua | những thử thách nhỏ, vừa sức,"
+ },
+ {
+  "id": "e5",
+  "scene": "end",
+  "text": "*ngay từ hôm nay.*"
+ },
+ {
+  "id": "z1",
+  "scene": "final",
+  "text": "Thương con, | là cho con *sự bảo vệ,*"
+ },
+ {
+  "id": "z2",
+  "scene": "final",
+  "text": "và cả *khoảng trời* | để lớn lên.",
+  "tts": {
+   "length": 1.15,
+   "noise": 0.667
+  }
+ }
+]
