@@ -2,7 +2,9 @@ import base64, html, json, pathlib
 
 ROOT = pathlib.Path('/home/user/ai-productivity-tool/may-may-di-lac')
 IMG = ROOT / 'nhan-vat'
-OUT = ROOT / 'index.html'
+import os
+NO_PROMPT = os.environ.get('NO_PROMPT') == '1'
+OUT = ROOT / ('index-khong-prompt.html' if NO_PROMPT else 'index.html')
 E = html.escape
 
 def b64(name):
@@ -520,7 +522,7 @@ def scene_block(s):
                 cs.append(k)
     imgs = ''.join(f'<p>{E(p)}</p>' for p in s['img'])
     snds = ''.join(f'<li><b>{E(w)}</b><span>{E(t)}</span></li>' for w, t in s['snd'])
-    shot_ids = ' · '.join(f'<a href="#prompt" data-goto="shot-{x["id"]}">{x["id"]}</a>' for x in shots)
+    shot_ids = ' · '.join(x['id'] if NO_PROMPT else f'<a href="#prompt" data-goto="shot-{x["id"]}">{x["id"]}</a>' for x in shots)
     return f'''
 <article class="scene panel" id="scene-{s['n']}">
   <header class="scene-head">
@@ -792,21 +794,21 @@ pre {{ margin: 0; padding: 12px 14px; font-family: var(--mono); font-size: 12.5p
     <nav class="tabs" aria-label="Các tab kịch bản">
       <a href="#tong-quan" data-tab="tong-quan">Tổng quan</a>
       <a href="#noi-dung" data-tab="noi-dung">Nội dung</a>
-      <a href="#prompt" data-tab="prompt">Prompt chi tiết</a>
+{'' if NO_PROMPT else '      <a href="#prompt" data-tab="prompt">Prompt chi tiết</a>'}
       <a href="#boi-canh" data-tab="boi-canh">Bối cảnh</a>
     </nav>
   </div>
   <main>
     <div class="tab" id="tab-tong-quan">{tab_overview}</div>
     <div class="tab" id="tab-noi-dung" hidden>{tab_content}</div>
-    <div class="tab" id="tab-prompt" hidden>{tab_prompt}</div>
+{'' if NO_PROMPT else '<div class="tab" id="tab-prompt" hidden>' + tab_prompt + '</div>'}
     <div class="tab" id="tab-boi-canh" hidden>{tab_loc}</div>
   </main>
 </div>
 
 <script>
 (function () {{
-  var TABS = ['tong-quan', 'noi-dung', 'prompt', 'boi-canh'];
+  var TABS = ['tong-quan', 'noi-dung', 'prompt', 'boi-canh'].filter(function (t) {{ return document.getElementById('tab-' + t); }});
   function show(name, target) {{
     if (TABS.indexOf(name) < 0) name = 'tong-quan';
     TABS.forEach(function (t) {{ document.getElementById('tab-' + t).hidden = t !== name; }});
@@ -841,6 +843,7 @@ pre {{ margin: 0; padding: 12px 14px; font-family: var(--mono); font-size: 12.5p
   }});
 
   var btns = document.querySelectorAll('.fbtn'), shots = document.querySelectorAll('.shot'), count = document.getElementById('fcount');
+  if (!count) return;
   btns.forEach(function (b) {{
     b.addEventListener('click', function () {{
       btns.forEach(function (x) {{ x.classList.toggle('on', x === b); }});

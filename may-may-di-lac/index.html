@@ -466,7 +466,7 @@ pre { margin: 0; padding: 12px 14px; font-family: var(--mono); font-size: 12.5px
   </div>
 </article>
 </div>
-    <div class="tab" id="tab-prompt" hidden>
+<div class="tab" id="tab-prompt" hidden>
 <section class="panel intro">
   <h2>Prompt chi tiết Seedance 2.0</h2>
   <p>20 shot, mỗi shot tạo 10 giây. Cách dùng: tải 5 ảnh sheet theo thứ tự <b>@Image1 Bắp · @Image2 Na · @Image3 Su · @Image4 Cô giáo · @Image5 Mây Mây</b>. Nếu cần giữ bối cảnh, thêm ảnh bối cảnh (tab Bối cảnh) làm @Image6. Sau đó dán prompt của shot.</p>
@@ -1125,7 +1125,7 @@ Style lock: high-end 3D animated family film, soft stylized rendering, rounded f
 
 <script>
 (function () {
-  var TABS = ['tong-quan', 'noi-dung', 'prompt', 'boi-canh'];
+  var TABS = ['tong-quan', 'noi-dung', 'prompt', 'boi-canh'].filter(function (t) { return document.getElementById('tab-' + t); });
   function show(name, target) {
     if (TABS.indexOf(name) < 0) name = 'tong-quan';
     TABS.forEach(function (t) { document.getElementById('tab-' + t).hidden = t !== name; });
@@ -1160,6 +1160,7 @@ Style lock: high-end 3D animated family film, soft stylized rendering, rounded f
   });
 
   var btns = document.querySelectorAll('.fbtn'), shots = document.querySelectorAll('.shot'), count = document.getElementById('fcount');
+  if (!count) return;
   btns.forEach(function (b) {
     b.addEventListener('click', function () {
       btns.forEach(function (x) { x.classList.toggle('on', x === b); });
