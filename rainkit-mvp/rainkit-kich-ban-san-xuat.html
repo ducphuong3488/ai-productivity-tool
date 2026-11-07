@@ -147,6 +147,27 @@ h3{font:700 22px/1.1 var(--display);text-transform:uppercase;letter-spacing:.04e
 .loc-id{font:800 54px/.8 var(--display);color:var(--amber)}
 .used{font:500 12px var(--mono);color:var(--muted)}
 
+.dl{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.dl-head{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;padding:12px 18px;background:rgba(28,43,77,.55);border-bottom:1px solid var(--line)}
+.dl-head b{font:700 20px var(--display);letter-spacing:.05em;text-transform:uppercase}
+.dl-head span{font:500 12px var(--mono);color:var(--amber)}
+.ln{display:grid;grid-template-columns:140px 150px minmax(0,1fr) 92px;gap:14px;padding:12px 18px;border-bottom:1px solid var(--line);align-items:start}
+.ln:last-child{border-bottom:0}
+.ln .t{font:500 12.5px var(--mono);color:var(--silver);font-variant-numeric:tabular-nums}
+.ln .w{font:700 15px var(--display);letter-spacing:.06em;text-transform:uppercase}
+.ln .w small{display:block;font:500 10.5px var(--mono);letter-spacing:.08em;color:var(--muted);margin-top:2px}
+.ln .w .on{color:var(--amber)}
+.ln .d{font-size:12.5px;color:var(--muted);font-style:italic}
+.ln .x{font-size:16px;line-height:1.5;color:#fff;margin-top:2px}
+.rate{font:500 11px var(--mono);text-align:right;color:var(--muted)}
+.rate b{display:block;font-weight:500;padding:3px 6px;border-radius:3px;text-align:center;margin-top:3px}
+.rate .r1{background:rgba(91,196,138,.18);color:var(--ok)}
+.rate .r2{background:rgba(233,162,59,.18);color:var(--amber)}
+.rate .r3{background:rgba(233,90,59,.22);color:#ff9b80}
+.mini{display:grid;gap:6px;margin-top:4px}
+.mini div{font-size:13px;line-height:1.5}
+.mini span{font:600 11px var(--mono);letter-spacing:.06em;color:var(--amber);margin-right:6px}
+@media (max-width:760px){.ln{grid-template-columns:1fr auto}.ln .w{grid-column:1}.ln .t{grid-column:1/-1}.ln>div:nth-child(3){grid-column:1/-1}.ln .rate{grid-row:2;grid-column:2}}
 footer{margin-top:40px;color:var(--muted);font-size:12.5px;border-top:1px solid var(--line);padding-top:16px;display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between;align-items:center}
 footer img{height:44px;border-radius:4px}
 
@@ -184,8 +205,9 @@ footer img{height:44px;border-radius:4px}
   <nav class="tabs" role="tablist" aria-label="Phần kịch bản">
     <button class="tab" role="tab" id="t-tong-quan" aria-controls="tong-quan" data-tab="tong-quan">Tổng quan <small>01</small></button>
     <button class="tab" role="tab" id="t-noi-dung" aria-controls="noi-dung" data-tab="noi-dung">Nội dung <small>02</small></button>
-    <button class="tab" role="tab" id="t-prompt" aria-controls="prompt" data-tab="prompt">Prompt từng cảnh <small>03</small></button>
-    <button class="tab" role="tab" id="t-boi-canh" aria-controls="boi-canh" data-tab="boi-canh">Bối cảnh <small>04</small></button>
+    <button class="tab" role="tab" id="t-thoai" aria-controls="thoai" data-tab="thoai">Thoại <small>03</small></button>
+    <button class="tab" role="tab" id="t-prompt" aria-controls="prompt" data-tab="prompt">Prompt từng cảnh <small>04</small></button>
+    <button class="tab" role="tab" id="t-boi-canh" aria-controls="boi-canh" data-tab="boi-canh">Bối cảnh <small>05</small></button>
   </nav>
 
   <!-- ============ TAB 1 ============ -->
@@ -331,10 +353,36 @@ footer img{height:44px;border-radius:4px}
     <p class="lead">Kịch bản phân cảnh theo timecode bản dựng cuối. Cột “Gốc” ghi lại mốc thời gian trong kịch bản MVP để đối chiếu.</p>
     <div class="scroll block" style="padding:0">
       <table class="script">
-        <thead><tr><th style="width:110px">Timecode</th><th>Phân cảnh (hình ảnh)</th><th style="width:26%">Lời bình (VO)</th><th style="width:24%">Âm thanh &amp; hiệu ứng</th></tr></thead>
+        <thead><tr><th style="width:110px">Timecode</th><th>Phân cảnh (hình ảnh)</th><th style="width:30%">Thoại &amp; lời bình</th><th style="width:24%">Âm thanh &amp; hiệu ứng</th></tr></thead>
         <tbody id="script-body"></tbody>
       </table>
     </div>
+  </section>
+
+  <!-- ============ TAB THOAI ============ -->
+  <section class="panel" id="thoai" role="tabpanel" aria-labelledby="t-thoai" hidden>
+    <h2>Thoại đầy đủ</h2>
+    <p class="lead">Toàn bộ lời bình trong kịch bản gốc được giữ nguyên câu chữ và chia theo timecode. Ngoài ra có thêm thoại ngắn cho nhân vật để cảnh tự nhiên hơn. Lời bình là giọng kể của Minh Anh.</p>
+    <div class="grid3" style="margin-bottom:18px">
+      <div class="block"><span class="label">Giọng · Minh Anh</span><b>Nữ, 20–23 tuổi, giọng miền Nam</b><div class="note" style="margin-top:6px">Một diễn viên lồng tiếng đọc cả lời bình (V.O.) và thoại trước máy. Trẻ, tươi, hài hước kiểu TikTok. Phần Hook than thở nửa đùa, từ Rainkit trở đi sáng và tự tin.</div></div>
+      <div class="block"><span class="label">Giọng · Huy (KOC)</span><b>Nam, 24 tuổi, giọng miền Nam</b><div class="note" style="margin-top:6px">Năng lượng cao, nói nhanh, kiểu reviewer TikTok. Âm thanh hơi “qua loa điện thoại” vì phát trong màn hình.</div></div>
+      <div class="block"><span class="label">Giọng · Bảo vệ bãi xe</span><b>Nam, 50 tuổi, giọng miền Nam</b><div class="note" style="margin-top:6px">Xởi lởi, thân thiện, nói chậm. Chỉ có 1 câu ở clip 06.</div></div>
+    </div>
+    <div class="block" style="margin-bottom:18px">
+      <div class="toolbar" style="margin:0 0 10px">
+        <span class="chip" style="border-color:var(--amber)">ON · Thoại trước máy, khớp khẩu hình trong Seedance</span>
+        <span class="chip">V.O. · Lời bình thu phòng thu</span>
+        <span class="chip">O.S. · Giọng ngoài khung hình, thu riêng</span>
+      </div>
+      <div class="toolbar" style="margin:0">
+        <button class="btn" data-copy="all-lines">Copy toàn bộ thoại</button>
+        <button class="btn" data-copy="vo-lines">Copy kịch bản thu V.O.</button>
+        <span class="note" id="dlg-stats"></span>
+      </div>
+      <pre id="all-lines" hidden></pre><pre id="vo-lines" hidden></pre>
+    </div>
+    <div class="stack" id="dialogue"></div>
+    <div class="warn" style="margin-top:18px">Giọng nhân vật do Seedance tạo có thể khác giọng diễn viên lồng tiếng lời bình. Nếu khác, thu lại các câu ON bằng cùng một diễn viên rồi lồng tiếng đè lên. Các câu đều ngắn dưới 3 giây nên khớp khẩu hình dễ.</div>
   </section>
 
   <!-- ============ TAB 3 ============ -->
@@ -378,7 +426,7 @@ const LOC={
 
 const STYLE_A="[Style Lock] Rainkit Navy Grade, Look A: cold overcast 4300K, saturation reduced, low contrast with rain haze, slate-grey sky. Any navy fabric keeps exact #1C2B4D. Fine 16mm grain, natural Vietnamese skin tones, no purple cast, no heavy vignette. Realistic handheld commercial footage.";
 const STYLE_B="[Style Lock] Rainkit Navy Grade, Look B: neutral 5200K daylight with warm sodium-amber backlight, medium-high contrast, deep blacks on wet asphalt. Navy #1C2B4D product colour kept exact, reflective silver lettering glows when lit, cobalt-blue towel is the only saturated accent. Fine 16mm grain, natural Vietnamese skin tones, no purple cast, no heavy vignette. Clean, trendy lifestyle-commercial look.";
-const NO_TEXT="No on-screen captions, no subtitles, no added graphics; overlays are added in post. No dialogue.";
+const NO_TEXT="No on-screen captions, no subtitles, no added graphics; overlays are added in post.\n__DIALOGUE__";
 const CHAR_MA="<Minh Anh> corresponds to @Image 1. Use only her face, hairstyle and body type: a 21-year-old Vietnamese woman with shoulder-length straight black hair and soft curtain bangs. Base outfit: white oversized T-shirt, light-wash straight jeans, white chunky sneakers, black laptop backpack. Do not use the image background.";
 const NEG="text, subtitles, watermark, RONALDO, number 7, misspelled name, extra letters, distorted logo, extra fingers, deformed hands, duplicate person, purple tint, oversaturated, cartoon, 3d render, blurry face";
 
@@ -445,7 +493,8 @@ ${NO_TEXT}
 8-10 seconds: Cut to a medium close-up of Minh Anh under the awning, the phone lowering; she smiles and nods once. Rain continues softly behind her.
 
 ${STYLE_B}
-No subtitles or added graphics outside the phone screen. No dialogue.
+No subtitles or added graphics outside the phone screen.
+__DIALOGUE__
 <Soft tap sounds on the touchscreen>
 <A bright ting chime as the preview appears>
 (Bass-boosted trap beat continues, light)`,
@@ -603,6 +652,60 @@ ${NO_TEXT}
   muse:"horizontal 16:9 widescreen, product hero shot, rainkit 6-in-1 set arranged in arc, long navy hooded raincoat on form with reflective silver MINH ANH 10, navy backpack rain cover, black zip rain boots, cobalt blue towel, navy wet bag, navy rectangular travel case in center, dark navy studio, glossy wet reflective floor, rim light sweep, amber accent light, negative space top center and right third for logo and qr code, premium commercial photography, crisp, fine grain"}
 ];
 
+const LINES={
+ "01":[
+  {s:0,e:2,who:"MINH ANH",type:"on",d:"giật mình, ngửa mặt nhìn trời",en:"in surprise, looking up at the sky",text:"Ơ… mưa thật luôn hả trời?!"},
+  {s:2,e:9,who:"MINH ANH",type:"vo",d:"kể chuyện, than thở nửa đùa, nhịp nhanh",text:"Chạy xe máy gặp mưa đã khổ, mặc áo mưa truyền thống còn khổ hơn! Tà áo bay phấp phới, giày vẫn ướt, balo thì lo ngấm nước."},
+  {s:9,e:10,who:"MINH ANH",type:"on",d:"lẩm bẩm lo lắng khi mở balo",en:"in a worried mutter while opening the backpack",text:"Laptop ơi…"}],
+ "02":[
+  {s:10,e:14,who:"MINH ANH",type:"vo",d:"tiếp mạch kể, hơi bực",text:"Mưa tạnh rồi, áo ướt biết cất đi đâu? Đến áo mưa cũng dễ bị cầm nhầm nữa chứ!"},
+  {s:14,e:15,who:"MINH ANH",type:"on",d:"thở dài, cầm hai áo giống hệt",en:"with a sigh, holding two identical ponchos",text:"Cái nào của mình đây…"},
+  {s:15,e:18.5,who:"HUY",type:"on",d:"năng lượng cao, nói vào camera điện thoại",en:"energetically to his phone camera, TikTok-reviewer style",text:"Đi mưa mà vẫn chất? Rainkit nha mọi người, in tên phản quang luôn!"},
+  {s:18.5,e:20,who:"MINH ANH",type:"vo",d:"giọng sáng lên, bắt đầu hào hứng",text:"Cho đến khi mình biết đến Rainkit –"}],
+ "03":[
+  {s:20,e:22.5,who:"MINH ANH",type:"vo",d:"hào hứng, nhấn “All-in-one”",text:"bộ sản phẩm đi mưa All-in-one!"},
+  {s:22.5,e:27.5,who:"MINH ANH",type:"vo",d:"nhấn vào “tên và số”",text:"Đặc biệt, còn được tự chọn tên và số phản quang, tạo phong cách riêng!"},
+  {s:28,e:30,who:"MINH ANH",type:"on",d:"cười, đọc to khi bấm xác nhận",en:"smiling, reading it aloud as she confirms",text:"Minh Anh, số 10. Chốt!"}],
+ "04":[
+  {s:30,e:38,who:"MINH ANH",type:"vo",d:"liệt kê theo nhịp beat, mỗi món một nhịp",text:"Sáu món thiết yếu, từ áo mưa, bọc balo, ủng, khăn lau đến túi Wet Bag và túi đựng bên ngoài."},
+  {s:38.5,e:40,who:"MINH ANH",type:"os",d:"thì thầm thích thú, ngoài khung hình",text:"Gọn ghê!"}],
+ "05":[
+  {s:40,e:42,who:"MINH ANH",type:"vo",d:"dứt khoát, ngay trước chuỗi match cut",text:"Mặc vào là sẵn sàng!"},
+  {s:42,e:48,who:"MINH ANH",type:"vo",d:"tự tin, ăn theo beat drop",text:"Từ áo mưa, ủng đến bọc balo – tất cả kết hợp thành một outfit đồng bộ, cực tiện khi đi mưa!"},
+  {s:48.5,e:50,who:"MINH ANH",type:"on",d:"nháy mắt vào ống kính khi đi ngang",en:"with a wink to the camera as she passes",text:"Mưa thì sao? Vẫn đẹp!"}],
+ "06":[
+  {s:50,e:55,who:"MINH ANH",type:"vo",d:"tự tin, nhấn “cực chất”",text:"Nẹp zip kép hạn chế nước tạt, thêm tên và số phản quang cực chất."},
+  {s:56.5,e:58,who:"BẢO VỆ",type:"on",d:"cười xởi lởi",en:"with a friendly laugh",text:"Áo con dễ kiếm ghê ha!"},
+  {s:58,e:60,who:"MINH ANH",type:"on",d:"cười, giơ áo lên",en:"laughing as she lifts the raincoat",text:"Có tên con trên đó mà chú!"}],
+ "07":[
+  {s:60,e:61.5,who:"MINH ANH",type:"vo",d:"nhẹ, như câu hỏi tu từ",text:"Mưa tạnh?"},
+  {s:62,e:68.5,who:"MINH ANH",type:"vo",d:"hướng dẫn, nhịp đều theo tay gấp áo",text:"Dùng khăn lau, gấp gọn áo mưa rồi cho ngay vào Wet Bag để tách riêng đồ ướt."}],
+ "08":[
+  {s:70,e:75.5,who:"MINH ANH",type:"vo",d:"nhanh, theo fast cut",text:"Bọc balo, ủng và phụ kiện cũng được thu gọn, xếp tất cả vào túi bên ngoài."},
+  {s:75.5,e:77,who:"MINH ANH",type:"vo",d:"dứt khoát, ăn theo tiếng khóa kéo",text:"Kéo khóa, đeo lên vai – xong!"},
+  {s:77,e:80,who:"MINH ANH",type:"vo",d:"khoe, tự hào",text:"Sáu món gói gọn trong một chiếc túi, mang đi cực tiện!"}],
+ "09":[
+  {s:80,e:83,who:"MINH ANH",type:"on",d:"cười thẳng vào ống kính, tự tin",en:"confidently, smiling straight into the camera",text:"Mưa bất chợt, có Rainkit lo!"},
+  {s:83.5,e:86,who:"MINH ANH",type:"vo",d:"ấm, chân thành",text:"Đừng để cơn mưa làm mất đi sự thoải mái của bạn."},
+  {s:86,e:89,who:"MINH ANH",type:"vo",d:"rõ ràng, nhấn “QR” và “ngay hôm nay”",text:"Quét mã QR trên màn hình để tham gia khảo sát và đăng ký trải nghiệm Rainkit ngay hôm nay."},
+  {s:89,e:90,who:"MINH ANH",type:"vo",d:"vui, chốt",text:"Đừng bỏ lỡ nhé!"}]
+};
+const SPK={"MINH ANH":"<Minh Anh>","HUY":"<Huy>, inside the phone video,","BẢO VỆ":"the parking attendant"};
+const TYPE={on:"ON",vo:"V.O.",os:"O.S."};
+const fmtTC=x=>{const m=Math.floor(x/60),sec=x-m*60;return String(m).padStart(2,"0")+":"+(sec%1?sec.toFixed(1).padStart(4,"0"):String(sec).padStart(2,"0"))};
+const fmtS=x=>(x%1?x.toFixed(1):String(x));
+const sylls=t=>t.replace(/[–—…!?,.:;"“”()]/g," ").split(/[\s-]+/).filter(Boolean).length;
+SCENES.forEach(sc=>{
+  sc.lines=LINES[sc.no];
+  const base=parseInt(sc.tc.slice(0,2))*60+parseInt(sc.tc.slice(3,5));
+  const on=sc.lines.filter(l=>l.type==="on");
+  const block=on.length?"Dialogue language: Vietnamese, natural Southern Vietnamese (Saigon) accent.\n"+on.map(l=>`At ${fmtS(l.s-base)}-${fmtS(l.e-base)} seconds, ${SPK[l.who]} says in Vietnamese, ${l.en}: {${l.text}}`).join("\n")+"\nNo other speech. No narrator voice; narration is added in post."
+    :"No on-camera dialogue. No narrator voice; narration is added in post.";
+  sc.sd=sc.sd.replace("__DIALOGUE__",block);
+  sc.vo=sc.lines.map(l=>l.text).join(" ");
+});
+const lineHTML=l=>`<div><span>${l.who} · ${TYPE[l.type]}</span>“${esc(l.text)}”</div>`;
+
 const LOCS=[
  {id:"L1",name:"Phố giờ tan tầm mưa",used:"Clip 01, 05, 06",img:null,
   desc:"Đường phố đô thị Việt Nam (Sài Gòn/Hà Nội) giờ tan tầm. Hàng quán, biển hiệu, dây điện, vỉa hè lát gạch. Dòng xe máy đông, người mặc áo mưa nhiều màu.",
@@ -655,7 +758,7 @@ const lookPill={cold:'<span class="grade-pill cold">Look A · Hook lạnh</span>
     const sfx=s.sfx.replace(/Text: .+$/,"");
     h+=`<tr><td class="tc">${s.tc}<span>Clip ${s.no}</span><span>${s.src}</span></td>
       <td><b>${esc(s.title)}</b><br>${esc(s.visual)}</td>
-      <td class="vo">“${esc(s.vo)}”</td>
+      <td><div class="mini">${s.lines.map(lineHTML).join("")}</div></td>
       <td>${esc(sfx)}${ov?'<div style="margin-top:6px">'+ov.split(" · ").map(t=>`<span class="ovl">${esc(t)}</span>`).join("")+'</div>':""}</td></tr>`;
   });
   $("#script-body").innerHTML=h;
@@ -677,7 +780,7 @@ const lookPill={cold:'<span class="grade-pill cold">Look A · Hook lạnh</span>
         <div class="pbox"><div class="ptitle"><span class="label" style="margin:0">Seedance 2.5 · 10s · 16:9</span><button class="btn" data-copy="sd-${s.no}">Copy prompt</button></div><pre id="sd-${s.no}">${esc(s.sd)}</pre></div>
         <div class="pbox"><div class="ptitle"><span class="label" style="margin:0">Tag prompt · Muse AI</span><button class="btn" data-copy="mu-${s.no}">Copy tags</button></div><pre class="tags" id="mu-${s.no}">${esc(s.muse)}</pre>
           <div class="neg"><div class="ptitle"><span class="label" style="margin:0">Negative tags</span><button class="btn" data-copy="ng-${s.no}">Copy</button></div><pre class="tags" id="ng-${s.no}">${esc(NEG)}</pre></div>
-          <div class="vo-line"><span class="label" style="margin:0">Lời bình ghép trên cảnh</span><span class="vo">“${esc(s.vo)}”</span></div>
+          <div class="vo-line"><span class="label" style="margin:0 0 6px">Thoại &amp; lời bình của cảnh</span><div class="mini">${s.lines.map(lineHTML).join("")}</div></div>
         </div>
       </div></article>`;
   }).join("");
@@ -699,6 +802,22 @@ const lookPill={cold:'<span class="grade-pill cold">Look A · Hook lạnh</span>
       </div></div>`;
 })();
 
+/* dialogue tab */
+(function(){
+  const rate=l=>{const n=sylls(l.text),r=n/(l.e-l.s);const c=r<=4.6?"r1":r<=5.4?"r2":"r3";const t=r<=4.6?"Thoải mái":r<=5.4?"Nhanh vừa":"Gấp";return `${n} âm tiết · ${r.toFixed(1)}/s<b class="${c}">${t}</b>`};
+  $("#dialogue").innerHTML=SCENES.map(s=>`<div class="dl"><div class="dl-head"><b>Clip ${s.no} · ${esc(s.title)}</b><span>${s.tc}</span></div>
+    ${s.lines.map(l=>`<div class="ln"><div class="t">${fmtTC(l.s)} – ${fmtTC(l.e)}</div>
+      <div class="w"><span class="${l.type==="on"?"on":""}">${l.who}</span><small>${TYPE[l.type]}</small></div>
+      <div><div class="d">(${esc(l.d)})</div><div class="x">${esc(l.text)}</div></div>
+      <div class="rate">${rate(l)}</div></div>`).join("")}</div>`).join("");
+  const all=SCENES.map(s=>`CLIP ${s.no} · ${s.tc} · ${s.title}\n`+s.lines.map(l=>`[${fmtTC(l.s)}–${fmtTC(l.e)}] ${l.who} (${TYPE[l.type]}) – (${l.d}): ${l.text}`).join("\n")).join("\n\n");
+  const vo=SCENES.flatMap(s=>s.lines.filter(l=>l.type!=="on").map(l=>`[${fmtTC(l.s)}–${fmtTC(l.e)}] (${l.d}) ${l.text}`)).join("\n");
+  $("#all-lines").textContent=all; $("#vo-lines").textContent=vo;
+  const L=SCENES.flatMap(s=>s.lines), voL=L.filter(l=>l.type==="vo");
+  const sec=voL.reduce((a,l)=>a+l.e-l.s,0), syl=voL.reduce((a,l)=>a+sylls(l.text),0);
+  $("#dlg-stats").textContent=`${L.length} câu · Lời bình ${syl} âm tiết trong ${sec.toFixed(1)}s (trung bình ${(syl/sec).toFixed(1)} âm tiết/giây)`;
+})();
+
 /* copy */
 document.addEventListener("click",e=>{
   const b=e.target.closest("[data-copy]"); if(!b) return;
@@ -709,7 +828,7 @@ document.addEventListener("click",e=>{
 });
 
 /* tabs */
-const TABS=["tong-quan","noi-dung","prompt","boi-canh"];
+const TABS=["tong-quan","noi-dung","thoai","prompt","boi-canh"];
 function show(id){
   if(!TABS.includes(id)) id="tong-quan";
   TABS.forEach(t=>{document.getElementById(t).hidden=t!==id;document.getElementById("t-"+t).setAttribute("aria-selected",t===id)});
