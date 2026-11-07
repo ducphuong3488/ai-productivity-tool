@@ -353,7 +353,7 @@ footer img{height:44px;border-radius:4px}
     <p class="lead">Kịch bản phân cảnh theo timecode bản dựng cuối. Cột “Gốc” ghi lại mốc thời gian trong kịch bản MVP để đối chiếu.</p>
     <div class="scroll block" style="padding:0">
       <table class="script">
-        <thead><tr><th style="width:110px">Timecode</th><th>Phân cảnh (hình ảnh)</th><th style="width:30%">Thoại &amp; lời bình</th><th style="width:24%">Âm thanh &amp; hiệu ứng</th></tr></thead>
+        <thead><tr><th style="width:110px">Timecode</th><th>Phân cảnh (hình ảnh)</th><th style="width:30%">Lời bình (V.O.)</th><th style="width:24%">Âm thanh &amp; hiệu ứng</th></tr></thead>
         <tbody id="script-body"></tbody>
       </table>
     </div>
@@ -362,27 +362,21 @@ footer img{height:44px;border-radius:4px}
   <!-- ============ TAB THOAI ============ -->
   <section class="panel" id="thoai" role="tabpanel" aria-labelledby="t-thoai" hidden>
     <h2>Thoại đầy đủ</h2>
-    <p class="lead">Toàn bộ lời bình trong kịch bản gốc được giữ nguyên câu chữ và chia theo timecode. Ngoài ra có thêm thoại ngắn cho nhân vật để cảnh tự nhiên hơn. Lời bình là giọng kể của Minh Anh.</p>
-    <div class="grid3" style="margin-bottom:18px">
-      <div class="block"><span class="label">Giọng · Minh Anh</span><b>Nữ, 20–23 tuổi, giọng miền Nam</b><div class="note" style="margin-top:6px">Một diễn viên lồng tiếng đọc cả lời bình (V.O.) và thoại trước máy. Trẻ, tươi, hài hước kiểu TikTok. Phần Hook than thở nửa đùa, từ Rainkit trở đi sáng và tự tin.</div></div>
-      <div class="block"><span class="label">Giọng · Huy (KOC)</span><b>Nam, 24 tuổi, giọng miền Nam</b><div class="note" style="margin-top:6px">Năng lượng cao, nói nhanh, kiểu reviewer TikTok. Âm thanh hơi “qua loa điện thoại” vì phát trong màn hình.</div></div>
-      <div class="block"><span class="label">Giọng · Bảo vệ bãi xe</span><b>Nam, 50 tuổi, giọng miền Nam</b><div class="note" style="margin-top:6px">Xởi lởi, thân thiện, nói chậm. Chỉ có 1 câu ở clip 06.</div></div>
+    <p class="lead">Theo đúng kịch bản gốc: video chỉ có lời bình, nhân vật không nói. Toàn bộ lời bình giữ nguyên từng chữ, chia theo timecode kèm cách đọc.</p>
+    <div class="grid2" style="margin-bottom:18px">
+      <div class="block"><span class="label">Giọng lời bình</span><b>Nữ, 20–23 tuổi, giọng trẻ, bắt trend</b><div class="note" style="margin-top:6px">Kể ở ngôi “mình”, như Minh Anh đang kể lại. Phần Hook than thở nửa đùa, từ lúc Rainkit xuất hiện thì sáng và tự tin. Thu âm phòng thu, ghép trong CapCut.</div></div>
+      <div class="block"><span class="label">Nhân vật trên hình</span><b>Không có thoại</b><div class="note" style="margin-top:6px">Minh Anh, KOC Huy (trong điện thoại) và người phụ chỉ diễn bằng biểu cảm và hành động. Prompt Seedance đều ghi “no dialogue”, chỉ giữ tiếng động hiện trường và nhạc.</div></div>
     </div>
     <div class="block" style="margin-bottom:18px">
-      <div class="toolbar" style="margin:0 0 10px">
-        <span class="chip" style="border-color:var(--amber)">ON · Thoại trước máy, khớp khẩu hình trong Seedance</span>
-        <span class="chip">V.O. · Lời bình thu phòng thu</span>
-        <span class="chip">O.S. · Giọng ngoài khung hình, thu riêng</span>
-      </div>
       <div class="toolbar" style="margin:0">
-        <button class="btn" data-copy="all-lines">Copy toàn bộ thoại</button>
-        <button class="btn" data-copy="vo-lines">Copy kịch bản thu V.O.</button>
+        <button class="btn" data-copy="vo-lines">Copy kịch bản thu lời bình</button>
+        <button class="btn" data-copy="all-lines">Copy kèm tên clip</button>
         <span class="note" id="dlg-stats"></span>
       </div>
       <pre id="all-lines" hidden></pre><pre id="vo-lines" hidden></pre>
     </div>
     <div class="stack" id="dialogue"></div>
-    <div class="warn" style="margin-top:18px">Giọng nhân vật do Seedance tạo có thể khác giọng diễn viên lồng tiếng lời bình. Nếu khác, thu lại các câu ON bằng cùng một diễn viên rồi lồng tiếng đè lên. Các câu đều ngắn dưới 3 giây nên khớp khẩu hình dễ.</div>
+
   </section>
 
   <!-- ============ TAB 3 ============ -->
@@ -653,42 +647,24 @@ ${NO_TEXT}
 ];
 
 const LINES={
- "01":[
-  {s:0,e:2,who:"MINH ANH",type:"on",d:"giật mình, ngửa mặt nhìn trời",en:"in surprise, looking up at the sky",text:"Ơ… mưa thật luôn hả trời?!"},
-  {s:2,e:9,who:"MINH ANH",type:"vo",d:"kể chuyện, than thở nửa đùa, nhịp nhanh",text:"Chạy xe máy gặp mưa đã khổ, mặc áo mưa truyền thống còn khổ hơn! Tà áo bay phấp phới, giày vẫn ướt, balo thì lo ngấm nước."},
-  {s:9,e:10,who:"MINH ANH",type:"on",d:"lẩm bẩm lo lắng khi mở balo",en:"in a worried mutter while opening the backpack",text:"Laptop ơi…"}],
- "02":[
-  {s:10,e:14,who:"MINH ANH",type:"vo",d:"tiếp mạch kể, hơi bực",text:"Mưa tạnh rồi, áo ướt biết cất đi đâu? Đến áo mưa cũng dễ bị cầm nhầm nữa chứ!"},
-  {s:14,e:15,who:"MINH ANH",type:"on",d:"thở dài, cầm hai áo giống hệt",en:"with a sigh, holding two identical ponchos",text:"Cái nào của mình đây…"},
-  {s:15,e:18.5,who:"HUY",type:"on",d:"năng lượng cao, nói vào camera điện thoại",en:"energetically to his phone camera, TikTok-reviewer style",text:"Đi mưa mà vẫn chất? Rainkit nha mọi người, in tên phản quang luôn!"},
-  {s:18.5,e:20,who:"MINH ANH",type:"vo",d:"giọng sáng lên, bắt đầu hào hứng",text:"Cho đến khi mình biết đến Rainkit –"}],
- "03":[
-  {s:20,e:22.5,who:"MINH ANH",type:"vo",d:"hào hứng, nhấn “All-in-one”",text:"bộ sản phẩm đi mưa All-in-one!"},
-  {s:22.5,e:27.5,who:"MINH ANH",type:"vo",d:"nhấn vào “tên và số”",text:"Đặc biệt, còn được tự chọn tên và số phản quang, tạo phong cách riêng!"},
-  {s:28,e:30,who:"MINH ANH",type:"on",d:"cười, đọc to khi bấm xác nhận",en:"smiling, reading it aloud as she confirms",text:"Minh Anh, số 10. Chốt!"}],
- "04":[
-  {s:30,e:38,who:"MINH ANH",type:"vo",d:"liệt kê theo nhịp beat, mỗi món một nhịp",text:"Sáu món thiết yếu, từ áo mưa, bọc balo, ủng, khăn lau đến túi Wet Bag và túi đựng bên ngoài."},
-  {s:38.5,e:40,who:"MINH ANH",type:"os",d:"thì thầm thích thú, ngoài khung hình",text:"Gọn ghê!"}],
- "05":[
-  {s:40,e:42,who:"MINH ANH",type:"vo",d:"dứt khoát, ngay trước chuỗi match cut",text:"Mặc vào là sẵn sàng!"},
-  {s:42,e:48,who:"MINH ANH",type:"vo",d:"tự tin, ăn theo beat drop",text:"Từ áo mưa, ủng đến bọc balo – tất cả kết hợp thành một outfit đồng bộ, cực tiện khi đi mưa!"},
-  {s:48.5,e:50,who:"MINH ANH",type:"on",d:"nháy mắt vào ống kính khi đi ngang",en:"with a wink to the camera as she passes",text:"Mưa thì sao? Vẫn đẹp!"}],
- "06":[
-  {s:50,e:55,who:"MINH ANH",type:"vo",d:"tự tin, nhấn “cực chất”",text:"Nẹp zip kép hạn chế nước tạt, thêm tên và số phản quang cực chất."},
-  {s:56.5,e:58,who:"BẢO VỆ",type:"on",d:"cười xởi lởi",en:"with a friendly laugh",text:"Áo con dễ kiếm ghê ha!"},
-  {s:58,e:60,who:"MINH ANH",type:"on",d:"cười, giơ áo lên",en:"laughing as she lifts the raincoat",text:"Có tên con trên đó mà chú!"}],
- "07":[
-  {s:60,e:61.5,who:"MINH ANH",type:"vo",d:"nhẹ, như câu hỏi tu từ",text:"Mưa tạnh?"},
-  {s:62,e:68.5,who:"MINH ANH",type:"vo",d:"hướng dẫn, nhịp đều theo tay gấp áo",text:"Dùng khăn lau, gấp gọn áo mưa rồi cho ngay vào Wet Bag để tách riêng đồ ướt."}],
- "08":[
-  {s:70,e:75.5,who:"MINH ANH",type:"vo",d:"nhanh, theo fast cut",text:"Bọc balo, ủng và phụ kiện cũng được thu gọn, xếp tất cả vào túi bên ngoài."},
-  {s:75.5,e:77,who:"MINH ANH",type:"vo",d:"dứt khoát, ăn theo tiếng khóa kéo",text:"Kéo khóa, đeo lên vai – xong!"},
-  {s:77,e:80,who:"MINH ANH",type:"vo",d:"khoe, tự hào",text:"Sáu món gói gọn trong một chiếc túi, mang đi cực tiện!"}],
- "09":[
-  {s:80,e:83,who:"MINH ANH",type:"on",d:"cười thẳng vào ống kính, tự tin",en:"confidently, smiling straight into the camera",text:"Mưa bất chợt, có Rainkit lo!"},
-  {s:83.5,e:86,who:"MINH ANH",type:"vo",d:"ấm, chân thành",text:"Đừng để cơn mưa làm mất đi sự thoải mái của bạn."},
-  {s:86,e:89,who:"MINH ANH",type:"vo",d:"rõ ràng, nhấn “QR” và “ngay hôm nay”",text:"Quét mã QR trên màn hình để tham gia khảo sát và đăng ký trải nghiệm Rainkit ngay hôm nay."},
-  {s:89,e:90,who:"MINH ANH",type:"vo",d:"vui, chốt",text:"Đừng bỏ lỡ nhé!"}]
+ "01":[{s:0.5,e:9.5,who:"LỜI BÌNH",type:"vo",d:"kể chuyện, than thở nửa đùa, nhịp nhanh",text:"Chạy xe máy gặp mưa đã khổ, mặc áo mưa truyền thống còn khổ hơn! Tà áo bay phấp phới, giày vẫn ướt, balo thì lo ngấm nước."}],
+ "02":[{s:10,e:14.5,who:"LỜI BÌNH",type:"vo",d:"tiếp mạch kể, hơi bực",text:"Mưa tạnh rồi, áo ướt biết cất đi đâu? Đến áo mưa cũng dễ bị cầm nhầm nữa chứ!"},
+  {s:17,e:20,who:"LỜI BÌNH",type:"vo",d:"giọng sáng lên khi thấy video KOC",text:"Cho đến khi mình biết đến Rainkit –"}],
+ "03":[{s:20,e:23,who:"LỜI BÌNH",type:"vo",d:"hào hứng, nhấn “All-in-one”",text:"bộ sản phẩm đi mưa All-in-one!"},
+  {s:23.5,e:29,who:"LỜI BÌNH",type:"vo",d:"nhấn vào “tên và số”",text:"Đặc biệt, còn được tự chọn tên và số phản quang, tạo phong cách riêng!"}],
+ "04":[{s:30,e:38.5,who:"LỜI BÌNH",type:"vo",d:"liệt kê theo nhịp beat, mỗi món một nhịp",text:"Sáu món thiết yếu, từ áo mưa, bọc balo, ủng, khăn lau đến túi Wet Bag và túi đựng bên ngoài."}],
+ "05":[{s:40,e:42,who:"LỜI BÌNH",type:"vo",d:"dứt khoát, ngay trước chuỗi match cut",text:"Mặc vào là sẵn sàng!"},
+  {s:42.5,e:49,who:"LỜI BÌNH",type:"vo",d:"tự tin, ăn theo beat drop",text:"Từ áo mưa, ủng đến bọc balo – tất cả kết hợp thành một outfit đồng bộ, cực tiện khi đi mưa!"}],
+ "06":[{s:50,e:56,who:"LỜI BÌNH",type:"vo",d:"tự tin, nhấn “cực chất”",text:"Nẹp zip kép hạn chế nước tạt, thêm tên và số phản quang cực chất."}],
+ "07":[{s:60,e:61.5,who:"LỜI BÌNH",type:"vo",d:"nhẹ, như câu hỏi tu từ",text:"Mưa tạnh?"},
+  {s:62,e:69,who:"LỜI BÌNH",type:"vo",d:"hướng dẫn, nhịp đều theo tay gấp áo",text:"Dùng khăn lau, gấp gọn áo mưa rồi cho ngay vào Wet Bag để tách riêng đồ ướt."}],
+ "08":[{s:70,e:75.5,who:"LỜI BÌNH",type:"vo",d:"nhanh, theo fast cut",text:"Bọc balo, ủng và phụ kiện cũng được thu gọn, xếp tất cả vào túi bên ngoài."},
+  {s:75.5,e:77,who:"LỜI BÌNH",type:"vo",d:"dứt khoát, ăn theo tiếng khóa kéo",text:"Kéo khóa, đeo lên vai – xong!"},
+  {s:77,e:80,who:"LỜI BÌNH",type:"vo",d:"khoe, tự hào",text:"Sáu món gói gọn trong một chiếc túi, mang đi cực tiện!"}],
+ "09":[{s:80,e:82,who:"LỜI BÌNH",type:"vo",d:"tự tin, câu thông điệp chủ đạo",text:"Mưa bất chợt, có Rainkit lo!"},
+  {s:82,e:84.5,who:"LỜI BÌNH",type:"vo",d:"ấm, chân thành",text:"Đừng để cơn mưa làm mất đi sự thoải mái của bạn."},
+  {s:84.5,e:89,who:"LỜI BÌNH",type:"vo",d:"rõ ràng, nhấn “QR” và “ngay hôm nay”",text:"Quét mã QR trên màn hình để tham gia khảo sát và đăng ký trải nghiệm Rainkit ngay hôm nay."},
+  {s:89,e:90,who:"LỜI BÌNH",type:"vo",d:"vui, chốt",text:"Đừng bỏ lỡ nhé!"}]
 };
 const SPK={"MINH ANH":"<Minh Anh>","HUY":"<Huy>, inside the phone video,","BẢO VỆ":"the parking attendant"};
 const TYPE={on:"ON",vo:"V.O.",os:"O.S."};
@@ -698,13 +674,11 @@ const sylls=t=>t.replace(/[–—…!?,.:;"“”()]/g," ").split(/[\s-]+/).filt
 SCENES.forEach(sc=>{
   sc.lines=LINES[sc.no];
   const base=parseInt(sc.tc.slice(0,2))*60+parseInt(sc.tc.slice(3,5));
-  const on=sc.lines.filter(l=>l.type==="on");
-  const block=on.length?"Dialogue language: Vietnamese, natural Southern Vietnamese (Saigon) accent.\n"+on.map(l=>`At ${fmtS(l.s-base)}-${fmtS(l.e-base)} seconds, ${SPK[l.who]} says in Vietnamese, ${l.en}: {${l.text}}`).join("\n")+"\nNo other speech. No narrator voice; narration is added in post."
-    :"No on-camera dialogue. No narrator voice; narration is added in post.";
+  const block="No dialogue. No character speaks at any point; no lip movement as if talking. No narrator voice; narration is recorded separately and added in post.";
   sc.sd=sc.sd.replace("__DIALOGUE__",block);
   sc.vo=sc.lines.map(l=>l.text).join(" ");
 });
-const lineHTML=l=>`<div><span>${l.who} · ${TYPE[l.type]}</span>“${esc(l.text)}”</div>`;
+const lineHTML=l=>`<div><span>${fmtTC(l.s)}</span>“${esc(l.text)}”</div>`;
 
 const LOCS=[
  {id:"L1",name:"Phố giờ tan tầm mưa",used:"Clip 01, 05, 06",img:null,
@@ -780,7 +754,7 @@ const lookPill={cold:'<span class="grade-pill cold">Look A · Hook lạnh</span>
         <div class="pbox"><div class="ptitle"><span class="label" style="margin:0">Seedance 2.5 · 10s · 16:9</span><button class="btn" data-copy="sd-${s.no}">Copy prompt</button></div><pre id="sd-${s.no}">${esc(s.sd)}</pre></div>
         <div class="pbox"><div class="ptitle"><span class="label" style="margin:0">Tag prompt · Muse AI</span><button class="btn" data-copy="mu-${s.no}">Copy tags</button></div><pre class="tags" id="mu-${s.no}">${esc(s.muse)}</pre>
           <div class="neg"><div class="ptitle"><span class="label" style="margin:0">Negative tags</span><button class="btn" data-copy="ng-${s.no}">Copy</button></div><pre class="tags" id="ng-${s.no}">${esc(NEG)}</pre></div>
-          <div class="vo-line"><span class="label" style="margin:0 0 6px">Thoại &amp; lời bình của cảnh</span><div class="mini">${s.lines.map(lineHTML).join("")}</div></div>
+          <div class="vo-line"><span class="label" style="margin:0 0 6px">Lời bình của cảnh</span><div class="mini">${s.lines.map(lineHTML).join("")}</div></div>
         </div>
       </div></article>`;
   }).join("");
@@ -815,7 +789,7 @@ const lookPill={cold:'<span class="grade-pill cold">Look A · Hook lạnh</span>
   $("#all-lines").textContent=all; $("#vo-lines").textContent=vo;
   const L=SCENES.flatMap(s=>s.lines), voL=L.filter(l=>l.type==="vo");
   const sec=voL.reduce((a,l)=>a+l.e-l.s,0), syl=voL.reduce((a,l)=>a+sylls(l.text),0);
-  $("#dlg-stats").textContent=`${L.length} câu · Lời bình ${syl} âm tiết trong ${sec.toFixed(1)}s (trung bình ${(syl/sec).toFixed(1)} âm tiết/giây)`;
+  $("#dlg-stats").textContent=`${L.length} câu · ${syl} âm tiết trong ${sec.toFixed(1)}s (trung bình ${(syl/sec).toFixed(1)} âm tiết/giây)`;
 })();
 
 /* copy */
