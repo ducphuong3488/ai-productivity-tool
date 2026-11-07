@@ -134,6 +134,8 @@ h3{font:700 22px/1.1 var(--display);text-transform:uppercase;letter-spacing:.04e
 .ptitle{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}
 .btn{appearance:none;border:1px solid var(--line);background:rgba(220,227,234,.08);color:var(--silver);font:600 12px var(--body);padding:6px 10px;border-radius:4px;cursor:pointer}
 .btn:hover{background:var(--silver);color:var(--ink)}
+.btn.muse{background:var(--amber);color:var(--ink);border-color:var(--amber);text-decoration:none;display:inline-block}
+.btn.muse:hover{background:var(--silver)}
 .btn.done{background:var(--ok);color:var(--ink);border-color:var(--ok)}
 .neg{margin-top:10px}
 .vo-line{margin-top:14px;font-size:13.5px}
@@ -386,6 +388,7 @@ footer img{height:44px;border-radius:4px}
     <div class="toolbar">
       <span class="note">Chú thích:</span>
       <span class="chip c">Nhân vật</span><span class="chip l">Bối cảnh</span><span class="chip p">Sản phẩm</span>
+      <a class="btn muse" href="https://muse.ai/" target="_blank" rel="noopener" style="margin-left:auto">Mở Muse.ai ↗</a>
     </div>
     <div class="stack" id="scenes"></div>
   </section>
@@ -752,7 +755,7 @@ const lookPill={cold:'<span class="grade-pill cold">Look A · Hook lạnh</span>
       <div class="refs"><span class="label" style="width:100%;margin:0">Upload theo thứ tự</span>${refs}</div>
       <div class="scene-body">
         <div class="pbox"><div class="ptitle"><span class="label" style="margin:0">Seedance 2.5 · 10s · 16:9</span><button class="btn" data-copy="sd-${s.no}">Copy prompt</button></div><pre id="sd-${s.no}">${esc(s.sd)}</pre></div>
-        <div class="pbox"><div class="ptitle"><span class="label" style="margin:0">Tag prompt · Muse AI</span><button class="btn" data-copy="mu-${s.no}">Copy tags</button></div><pre class="tags" id="mu-${s.no}">${esc(s.muse)}</pre>
+        <div class="pbox"><div class="ptitle"><span class="label" style="margin:0">Tag prompt · Muse AI</span><span style="display:flex;gap:6px;flex-wrap:wrap"><button class="btn" data-copy="mu-${s.no}">Copy tags</button><a class="btn muse" href="https://muse.ai/" target="_blank" rel="noopener" data-copy="mu-${s.no}">Copy &amp; mở Muse.ai ↗</a></span></div><pre class="tags" id="mu-${s.no}">${esc(s.muse)}</pre>
           <div class="neg"><div class="ptitle"><span class="label" style="margin:0">Negative tags</span><button class="btn" data-copy="ng-${s.no}">Copy</button></div><pre class="tags" id="ng-${s.no}">${esc(NEG)}</pre></div>
           <div class="vo-line"><span class="label" style="margin:0 0 6px">Lời bình của cảnh</span><div class="mini">${s.lines.map(lineHTML).join("")}</div></div>
         </div>
@@ -768,11 +771,11 @@ const lookPill={cold:'<span class="grade-pill cold">Look A · Hook lạnh</span>
     </div>
     <div class="main">
       <dl class="kv"><dt>Mô tả</dt><dd>${esc(l.desc)}</dd><dt>Ánh sáng</dt><dd>${esc(l.light)}</dd><dt>Đạo cụ</dt><dd>${esc(l.props)}</dd></dl>
-      <div class="pbox"><div class="ptitle"><span class="label" style="margin:0">Tag prompt · Muse AI (ảnh bối cảnh trống)</span><button class="btn" data-copy="loc-${l.id}">Copy tags</button></div><pre class="tags" id="loc-${l.id}">${esc(l.muse)}</pre></div>
+      <div class="pbox"><div class="ptitle"><span class="label" style="margin:0">Tag prompt · Muse AI (ảnh bối cảnh trống)</span><span style="display:flex;gap:6px;flex-wrap:wrap"><button class="btn" data-copy="loc-${l.id}">Copy tags</button><a class="btn muse" href="https://muse.ai/" target="_blank" rel="noopener" data-copy="loc-${l.id}">Copy &amp; mở Muse.ai ↗</a></span></div><pre class="tags" id="loc-${l.id}">${esc(l.muse)}</pre></div>
     </div></article>`).join("") + `<div class="block"><span class="label">Character sheet · Muse AI</span>
       <div class="grid2">
-        <div class="pbox"><div class="ptitle"><b>REF-A · Minh Anh</b><button class="btn" data-copy="cs-a">Copy tags</button></div><pre class="tags" id="cs-a">character sheet, turnaround front side back, full body and close-up face, young vietnamese woman 21, shoulder-length straight black hair, soft curtain bangs, natural makeup, slim, white oversized t-shirt, light-wash straight jeans, white chunky sneakers, black backpack, neutral grey background, even studio light, consistent face, photorealistic</pre></div>
-        <div class="pbox"><div class="ptitle"><b>REF-B · KOC Huy</b><button class="btn" data-copy="cs-b">Copy tags</button></div><pre class="tags" id="cs-b">character sheet, turnaround front side back, full body and close-up face, young vietnamese man 24, short textured undercut, clean-shaven, friendly smile, black hoodie, neutral grey background, even studio light, consistent face, photorealistic</pre></div>
+        <div class="pbox"><div class="ptitle"><b>REF-A · Minh Anh</b><a class="btn muse" href="https://muse.ai/" target="_blank" rel="noopener" data-copy="cs-a">Copy &amp; mở Muse.ai ↗</a></div><pre class="tags" id="cs-a">character sheet, turnaround front side back, full body and close-up face, young vietnamese woman 21, shoulder-length straight black hair, soft curtain bangs, natural makeup, slim, white oversized t-shirt, light-wash straight jeans, white chunky sneakers, black backpack, neutral grey background, even studio light, consistent face, photorealistic</pre></div>
+        <div class="pbox"><div class="ptitle"><b>REF-B · KOC Huy</b><a class="btn muse" href="https://muse.ai/" target="_blank" rel="noopener" data-copy="cs-b">Copy &amp; mở Muse.ai ↗</a></div><pre class="tags" id="cs-b">character sheet, turnaround front side back, full body and close-up face, young vietnamese man 24, short textured undercut, clean-shaven, friendly smile, black hoodie, neutral grey background, even studio light, consistent face, photorealistic</pre></div>
       </div></div>`;
 })();
 
